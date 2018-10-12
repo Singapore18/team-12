@@ -27,5 +27,7 @@ def updateQuestions():
             output['status'] = 'OK'
         except:
             output['status'] = 'ERROR'
+        finally:
+            factory.close_all(cursor=cursor, connection=connection)
     logging.info("My result :{}".format(output))
     return jsonify(output);
