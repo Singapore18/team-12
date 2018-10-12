@@ -10,6 +10,17 @@ import emoji4 from './pic/emoji4.png';
 import emoji5 from './pic/emoji5.png';
 import emoji6 from './pic/emoji6.png';
 import emoji7 from './pic/emoji7.png';
+import C1_Score from './pic/C1_Score.png';
+import C2 from './pic/C2.png';
+import G1_Score from './pic/G1_Score.png';
+import G2_Score from './pic/G2_Score.png';
+import P2 from './pic/P2.png';
+import S1 from './pic/S1.png';
+import S2 from './pic/S2.png';
+import S3_Score from './pic/S3_Score.png';
+import T1 from './pic/T1.png';
+import T2_Score from './pic/T2_Score.png';
+
 
 class App extends Component {
 
@@ -65,9 +76,11 @@ class App extends Component {
         }
       }],
       currentStep: 0,
-      dashboard:false,
+      dashboard:true,
     }
     this.onClickNext = this.onClickNext.bind(this);
+    this.dashboard = this.dashboard.bind(this);
+    this.question = this.question.bind(this);
   }
 
   changeOpacity = (e) => {
@@ -118,6 +131,17 @@ class App extends Component {
     this.setState({ black: !this.state.black })
   }
 
+  question(){
+    this.setState({dashboard:true});
+  }
+
+
+  
+  dashboard(){
+    this.setState({dashboard:false});
+    console.log(this.state.dashboard)
+  }
+
 
   render() {
 
@@ -142,8 +166,9 @@ class App extends Component {
 
     return (
       <div className="App">
-
-        <button style={{ textAlign: "center" }} onClick={() => this.start()}> Start Challenge </button>
+      {this.state.dashboard?
+      <div><Button bsStyle = "danger"  onClick={() => this.start()}> Start Challenge </Button>
+      <Button bsStyle="success" style={{float:"right"}}onClick={this.dashboard }>Go to Dashboard (Admin) </Button>
         {/* <div class="topnav">
           <a className = {top} style={{borderRadius: "50%"}} href="#home" onClick={this.changeColor.bind(this)}>Level 1</a>
           <a href="#news" onClick={() => this.changeSection("level2")}>Level 2</a>
@@ -153,9 +178,11 @@ class App extends Component {
 
         <div style={{backgroundColor:"orange", marginRight:"200px",marginLeft:"200px"}}>
           <Stepper steps={steps} activeStep={currentStep} />
-
+          
         </div>
+        <div style={{textAlign:"center"}}>
         <Button bsStyle="success" style={{float:"right"}}onClick={this.onClickNext }>Next</Button>
+        </div>
         <div class="sidenav">
           <div class="pic" style={{ opacity: this.state.op1, backgroundColor: "white", marginBottom: "20px" }}><input type="image" style={{ width: "90px", height: "90px", margin: "auto" }} onClick={() => this.changeOpacity("op1")} src="https://www.shareicon.net/data/512x512/2015/05/27/44710_twitter_512x512.png" /></div>
           <div class="pic" style={{ opacity: this.state.op2, backgroundColor: "white", marginBottom: "20px" }}><input type="image" style={{ width: "90px", height: "90px", margin: "auto" }} onClick={() => this.changeOpacity("op2")} src="https://orig00.deviantart.net/a7f4/f/2017/330/c/0/monster_hunter_world_icon__10__by_malfacio-dbuwzv6.png" /></div>
@@ -185,9 +212,28 @@ class App extends Component {
 
 
         </div>
+</div> :<div>
+<Button bsStyle="success" style={{float:"right"}}onClick={this.question }>Go back to question</Button>
+                <img src={C1_Score} />
+                <img src={C2}/>
+                <img src={G1_Score}/>
+                <img src={G2_Score} />
+                <img src={P2} />
+                <img src={S1} />
+                <img src={S2} />
+                <img src={S3_Score} />
+                <img src={T1} />
+                <img src={T2_Score} />
+
+</div> }
+        
         
 
-      </div>
+</div>
+
+      
+
+     
     );
   }
 }
