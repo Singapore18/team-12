@@ -9,17 +9,17 @@ from cfg.routes import connection_manager
 logger = logging.getLogger(__name__)
 
 @app.route('/questions', methods=['GET'])
-def evaluate():
+def get():
     data = request.get_json();
     result = [
         {
-            id: 1,
-            text: "string",
-            category: 1,
-            isScale: boolean,
+            "id": 1,
+            "text": "string",
+            "category": 1,
+            "isScale": False,
             # scale: int,
             # reversed: boolean,
-            options: ["string1", "string2", "string3", "string4"]
+            "options": ["string1", "string2", "string3", "string4"]
         }
         # {
         #     id: int,
