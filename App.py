@@ -2,6 +2,8 @@ import logging
 from cfg import app
 logger = logging.getLogger(__name__)
 
+import config
+
 @app.route('/', methods=['GET'])
 def default_route():
     return "Team 12 page :)";
@@ -21,4 +23,4 @@ if __name__ == "__main__":
     rootLogger.addHandler(consoleHandler)
 
     logger.info("Starting application ...")
-    app.run()
+    app.run(host=config.RUNHOST, port=config.RUNPORT)
